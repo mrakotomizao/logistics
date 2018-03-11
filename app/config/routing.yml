@@ -1,0 +1,23 @@
+sse_logistics:
+    type:     rest
+    resource: "@LogisticsBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+sse_auth:
+    resource: "@AuthBundle/Resources/config/routing.yml"
+#    prefix: /{_locale}
+#    requirements:
+#        _locale: fr|en
+
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+#app/config/routing.yml
+nelmio_api_swagger:
+    resource: "@NelmioApiDocBundle/Resources/config/swagger_routing.yml"
+    prefix: /api-docs

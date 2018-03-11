@@ -1,0 +1,4 @@
+services:
+#    sse_auth.example:
+#        class: SSE\AuthBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

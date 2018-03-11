@@ -1,0 +1,23 @@
+sse_api_orders:
+    type:       rest
+    resource:   LogisticsBundle\Controller\OrdersController
+
+sse_api_order_details:
+    type:       rest
+    resource:   LogisticsBundle\Controller\OrderDetailsController
+
+sse_api_devices:
+    type:       rest
+    resource:   LogisticsBundle\Controller\DevicesController
+
+sse_api_users:
+    type:       rest
+    resource:   LogisticsBundle\Controller\UsersController
+
+sse_api_catalog_packs:
+    type:       rest
+    resource:   LogisticsBundle\Controller\CatalogPacksController
+
+sse_api_pack_registrations:
+    type:       rest
+    resource:   LogisticsBundle\Controller\PackRegistrationsController

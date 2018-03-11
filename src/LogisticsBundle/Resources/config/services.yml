@@ -1,0 +1,67 @@
+services:
+#    sse_auth.example:
+#        class: SSE\AuthBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    inventory_item_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\InventoryItem
+
+    catalog_item_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\CatalogItem
+
+    catalog_pack_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\CatalogPack
+
+    distributor_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\Distributor
+
+    purchase_order_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\PurchaseOrder
+
+    user_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - AuthBundle\Entity\User
+
+    order_detail_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - LogisticsBundle\Entity\OrderDetail
+
+    logistics.order_manager:
+        class: LogisticsBundle\Model\OrderManager
+        arguments:
+            - "@catalog_pack_repository"
+            - "@catalog_item_repository"
+            - "@distributor_repository"
+            - "@purchase_order_repository"
+            - "@user_repository"
+
+    logistics.device_manager:
+        class: LogisticsBundle\Model\DeviceManager
+        arguments:
+            - "@inventory_item_repository"
+            - "@order_detail_repository"
+
+    logistics.order_detail_manager:
+        class: LogisticsBundle\Model\OrderDetailManager
+        arguments:
+            - "@order_detail_repository"
+            - "@logistics.device_manager"
